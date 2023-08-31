@@ -1,12 +1,11 @@
-package com.wanted.preonboarding.theater.domain;
+package com.wanted.preonboarding.theater.controller.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Getter
-@AllArgsConstructor
-public class Audience {
-    private Long id;
+public class AudienceRequestDto {
     private String name;
     private boolean hasTicket;
 
