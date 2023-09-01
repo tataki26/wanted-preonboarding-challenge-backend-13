@@ -6,16 +6,15 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class Theater {
-
     public void enter(Audience audience, TicketSeller ticketSeller){
-        if(audience.getBag().hasInvitation()){
-            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-            audience.getBag().setTicket(ticket);
+        if(audience.checkInvitation()){
+            Ticket ticket = ticketSeller.getTicket();
+            audience.receiveTicket(ticket);
         }else {
-            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-            audience.getBag().minusAmount(ticket.getFee());
-            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
-            audience.getBag().setTicket(ticket);
+            Ticket ticket = ticketSeller.getTicket();
+            audience.payForTicket(ticket.getFee());
+            ticketSeller.sellTicket(ticket.getFee());
+            audience.receiveTicket(ticket);
         }
     }
 }

@@ -8,4 +8,16 @@ public class Audience {
     }
 
     public Bag getBag(){ return bag;}
+
+    public boolean checkInvitation() {
+        return bag.hasInvitation();
+    }
+
+    public void payForTicket(long amount) {
+        bag.minusAmount(amount);
+    }
+
+    public void receiveTicket(Ticket ticket) {
+        bag.setTicket(ticket);
+    }
 }
